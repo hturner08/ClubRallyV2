@@ -1,0 +1,27 @@
+{% load bootstrap3%}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'clubs/style.css' %}" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="blocks">
+  {#Side bar#}
+  <div id = "Menu" class="block">
+    <div id = "block1"></div>
+    <a href='' class="button"> My Clubs</a>
+    <a href='' class="button"> Search Clubs</a>
+    <a href='' class="button"> Calendar</a>
+    <a href='' class="button"> Settings</a>
+
+  </div>
+  <div id="Clubs" class="blocks">
+  {% if club_list %}
+      {% for club in club_list %}
+      <div id="Box">
+        <h1>{{ club.name }}</h1>
+        <a class = "viewbutton" href="{% url 'clubs:detail' club.id %}">View</a>
+      </div>
+      {% endfor %}
+  {% else %}
+    <p> No clubs have been created.</p>
+  {% endif %}
+  </div>
+</div>

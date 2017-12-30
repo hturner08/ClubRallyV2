@@ -1,0 +1,6 @@
+<h2> Create new club </h2>
+<form method="post" novalidate>
+  {%csrf_token%}
+  {{form.as_p}}
+  <p><input type ="submit" value="Create club"/></p>
+</form>

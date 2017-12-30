@@ -1,0 +1,108 @@
+.button{
+    display:block;
+    width:8em;
+    height:5em;
+    vertical-align:middle;
+    text-align:center;
+    font-size:12pt;
+    line-height:5em;
+    opacity:.5;
+    background-color:Black;
+}
+.button:hover{
+  background-color: #32CD32;
+  transition: 0.5s;
+}
+#block1{
+  width:8em;
+  height:4em;
+  background-color:Black;
+}
+.blocks{
+  display:-webkit-inline-box;
+}
+#Box{
+  background-color:White;
+  height:150pt;
+  width:100pt;
+  display:table;
+  border-style:solid;
+  border-color:Grey;
+  border-width:medium;
+  text-align:center;
+  margin-left:5em;
+  margin-bottom:3em;
+  font-size:1em;;
+}
+#Clubs{
+  display: -webkit-flex; /* Safari */
+    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+    display: flex;
+    flex-wrap: wrap;
+  width:90%;
+}
+.viewbutton{
+  display:table-cell;
+  vertical-align:bottom;
+  width:35%;
+  height:20pt;
+  padding:0;
+  vertical-align:middle;
+  margin-left:2em;
+  line-height:14em;
+  font-size:10pt;
+  line-height:5em;
+  opacity:.5;
+  background-color:Blue;
+}
+.viewbutton:hover{
+  background-color:Blue;
+  transition: 0.5s;
+}
+
+.front{
+  background-image:url("cover.jpeg");
+  background-size:cover;
+  text-align:center;
+  color:White;
+}
+.btn{
+  width:16em;
+  height:8em;
+  border-style:solid;
+  border-width:medium;
+  color:White;
+  border-color:LightBlue;
+  text-decoration:none;
+  font-size:20pt;
+  margin-right:.5em;
+  margin-left:.5em;
+}
+.btn:hover{
+  background-color:LightBlue;
+}
+.h2{
+  text-decoration:none;
+  font-style:bold;
+  font-size:14pt;
+  float:right;
+  color:SkyBlue;
+  position:relative;
+  top:-200px;
+}
+.title{
+  text-decoration:none;
+  text-align:center;
+  margin-top:25%;
+  font-size:40pt;
+}
+/* About Us Page*/
+.about{
+  text-align:center;
+}
+.bar{
+  height:.5em;
+  width:2em;
+  background-color:Grey;
+  margin-left:48%;
+}

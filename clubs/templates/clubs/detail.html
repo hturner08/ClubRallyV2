@@ -1,0 +1,37 @@
+{% load bootstrap3%}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'clubs/style.css' %}" />
+{#Side bar#}
+<div class="blocks">
+  <div class="block" id = "Menu">
+    <a href="{%url 'clubs:index'%}" class="button"> My Clubs</a>
+    <a href="{%url 'clubs:index' %}" class="button"> Search Clubs</a>
+    <a href='' class="button"> Calendar</a>
+    <a href='' class="button"> Settings</a>
+  </div>
+  <div class="block">
+    <h2 style="text-align:center">{{club.name}}</h2>
+    <div>
+    {%if club.board%}
+    <ul>
+      {%for person in club.board.all%}
+      <li> {{person}} </li>
+      {% endfor %}
+    </ul>
+    {%else%}
+      This club doesn't currently have any board members. ;(
+    {%endif%}
+  </div>
+    {%if club.members%}
+    <ul>
+      {%for person in club.memberList.all%}
+      <li> {{person}} </li>
+      {% endfor %}
+    </ul>
+    {%else%}
+      This club doesn't currently have any members. ;(
+    {%endif%}
+    <div id="description">{{club.description}}</div>
+    <div id="bottommenu"></div>
+  </div>
+</div>

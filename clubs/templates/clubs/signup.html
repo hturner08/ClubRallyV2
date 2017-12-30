@@ -1,0 +1,10 @@
+{% block body %}
+  <div class="container">
+    <h2>Sign up</h2>
+    <form method="post" novalidate>
+      {% csrf_token %}
+    {{form.as_p}}
+    <p><input type="submit" value="Sign up" /></p>
+</form>
+  </div>
+{% endblock %}
