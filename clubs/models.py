@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-
+from itertools import chain
 from django.db import models
 from django.core.mail import send_mail
 from django.contrib.auth.models import PermissionsMixin
@@ -39,6 +39,36 @@ class UserManager(BaseUserManager):
 
         return self._create_user(username, email, password, **extra_fields)
 
+class Club(models.Model):
+    name = models.CharField(max_length=30)
+    # id = models.IntegerField(default=Club.objects.all()|length,primary_key=True)
+    creator = models.ForeignKey('clubs.User', on_delete=models.CASCADE,blank=True,null=True)
+    presidents = models.ManyToManyField('clubs.User',related_name='Co-Presidents+')
+    board = models.ManyToManyField('clubs.User', related_name='board members+', blank = True)
+    memberList = models.ManyToManyField('clubs.User',related_name='members+', blank = True)
+    description = models.CharField(max_length=10000,blank = True)
+    creationDate = models.DateField('date created', default = datetime.now)
+    weeklyMeetingTime = models.TimeField('Weekly Meeting Time',  default=datetime.now, blank =True)
+    Day_Choices = (
+    ('M','Monday'),
+    ('Tu','Tuesday'),
+    ('W','Wednesday'),
+    ('Th','Thursday'),
+    ('F','Friday'),
+    ('Sa','Saturday'),
+    ('Su','Sunday'),
+    )
+    weeklyMeetingDay = models.CharField(max_length=2,choices=Day_Choices,blank=True)
+    icon = models.ImageField(upload_to='icons/', default="{%static 'clubs/clubdefault.png'%}", blank=True)
+    def count(self):
+        return presidents.size + board.size + memberList.size
+    def boardPromote(self, member):
+        return member;
+    def delete(self):
+        self.delete()
+    def __str__(self):
+        return self.name
+
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), unique=True)
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
@@ -76,33 +106,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         Sends an email to this User.
         '''
         send_mail(subject, message, from_email, [self.email], **kwargs)
-
-class Club(models.Model):
-    name = models.CharField(max_length=30)
-    # id = models.IntegerField(default=Club.objects.all()|length,primary_key=True)
-    creator = models.ForeignKey(User, on_delete=models.CASCADE,blank=True,null=True)
-    presidents = models.ManyToManyField('clubs.User',related_name='Co-Presidents+')
-    board = models.ManyToManyField('clubs.User', related_name='board members+', blank = True)
-    memberList = models.ManyToManyField('clubs.User',related_name='members+', blank = True)
-    description = models.CharField(max_length=10000,blank = True)
-    creationDate = models.DateField('date created', default = datetime.now)
-    weeklyMeetingTime = models.TimeField('Weekly Meeting Time',  default=datetime.now, blank =True)
-    Day_Choices = (
-    ('M','Monday'),
-    ('Tu','Tuesday'),
-    ('W','Wednesday'),
-    ('Th','Thursday'),
-    ('F','Friday'),
-    ('Sa','Saturday'),
-    ('Su','Sunday'),
-    )
-    weeklyMeetingDay = models.CharField(max_length=2,choices=Day_Choices,blank=True)
-    icon = models.ImageField(upload_to='icons/', default="{%static 'clubs/clubdefault.png'%}", blank=True)
-    def count(self):
-        return presidents.size + board.size + memberList.size
-    def boardPromote(self, member):
-        return member;
-    def delete(self):
-        self.delete()
-    def __str__(self):
-        return self.name
+    def add_club(self,club_id):
+        addclub = Club.objects.filter(pk=club_id)
+        self.current_clubs.add(club_id)

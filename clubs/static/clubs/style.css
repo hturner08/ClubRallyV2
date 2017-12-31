@@ -1,16 +1,44 @@
+body{
+  margin:0;
+}
+/*Menu Bar */
+.logobar{
+  position:absolute;
+  background-color:#6C7A89;
+  /* background-color:White; */
+  width:100vw;
+  height:10vh;
+  display:-webkit-inline-box;
+}
+.logoutbutton{
+  float:right;
+  text-decoration:none;
+  font-weight:bold;
+  color:Black;
+}
+.logoutbutton:hover{
+  background-color:DarkGrey;
+  transition:.5s;
+}
+#Menu{
+  background-color:#013243;
+  position:fixed;
+  height:100vw;
+}
 .button{
     display:block;
-    width:8em;
-    height:5em;
-    vertical-align:middle;
-    text-align:center;
-    font-size:12pt;
-    line-height:5em;
-    opacity:.5;
-    background-color:Black;
+    width:20vw;
+    height:10vh;
+    text-align:left;
+    text-indent:1vw;
+    text-decoration:none;
+    font-weight:bold;
+    color:White;
+    font-size:20pt;
+    line-height:10vh;
 }
 .button:hover{
-  background-color: #32CD32;
+  background-color:LightGrey;
   transition: 0.5s;
 }
 #block1{
@@ -20,46 +48,69 @@
 }
 .blocks{
   display:-webkit-inline-box;
+  margin-top:10vh;
+  width:inherit;
 }
+#otherlinks{
+  text-align:left;
+  text-indent:1vw;
+  margin-top:40vh;
+  text-decoration:none;
+}
+/*Clubs*/
 #Box{
   background-color:White;
   height:150pt;
   width:100pt;
-  display:table;
   border-style:solid;
   border-color:Grey;
   border-width:medium;
   text-align:center;
   margin-left:5em;
   margin-bottom:3em;
-  font-size:1em;;
+  font-size:1em;
 }
 #Clubs{
   display: -webkit-flex; /* Safari */
     -webkit-flex-wrap: wrap; /* Safari 6.1+ */
     display: flex;
     flex-wrap: wrap;
-  width:90%;
+  width:80vw;
+  height:100vh;
+  background-color:#d9e0e7;
+  margin-top:1vw;
+  margin-left:30vh;
 }
 .viewbutton{
-  display:table-cell;
-  vertical-align:bottom;
+  position: relative;
+  margin-top: 95%;
   width:35%;
   height:20pt;
-  padding:0;
+  padding-left:20pt;
+  padding-right:20pt;
+  padding-top:10pt;
+  padding-bottom:10pt;
   vertical-align:middle;
   margin-left:2em;
   line-height:14em;
-  font-size:10pt;
+  text-decoration:none;
+  font-weight:bold;
+  font-size:14pt;
   line-height:5em;
-  opacity:.5;
-  background-color:Blue;
+  background-color:#22A7F0;
 }
 .viewbutton:hover{
-  background-color:Blue;
+  opacity:.5;
   transition: 0.5s;
 }
-
+/*Club Details*/
+#clubinfo{
+  margin-left:20vw;
+  width:80vw;
+  height:100vh;
+  background-color:#d9e0e7;
+}
+/*Front page*/
 .front{
   background-image:url("cover.jpeg");
   background-size:cover;
@@ -67,34 +118,35 @@
   color:White;
 }
 .btn{
-  width:16em;
-  height:8em;
+  width:10vw;
+  height:5vw;
   border-style:solid;
   border-width:medium;
   color:White;
-  border-color:LightBlue;
+  border-color:#22A7F0;
   text-decoration:none;
+  padding:5pt;
   font-size:20pt;
   margin-right:.5em;
   margin-left:.5em;
 }
 .btn:hover{
-  background-color:LightBlue;
+  background-color:#22A7F0;
 }
 .h2{
   text-decoration:none;
-  font-style:bold;
-  font-size:14pt;
+  font-weight:bold;
+  font-size:20pt;
   float:right;
-  color:SkyBlue;
-  position:relative;
-  top:-200px;
+  margin-right:2vw;
+  color:#22A7F0;
+  margin-top:-42vh;
 }
 .title{
   text-decoration:none;
   text-align:center;
-  margin-top:25%;
   font-size:40pt;
+  margin-top:45vh;
 }
 /* About Us Page*/
 .about{

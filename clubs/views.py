@@ -78,3 +78,10 @@ def detail(request, club_id):
         return render(request, 'clubs/detail.html',{'club' : theCluuuuub})
     return HttpResponse("You do not have access to this page")
     #Yes that was a Key&Peele reference, and yes it took me 4 tries to get the Us right when I called the variable again
+def join(request, club_id):
+    club = get_object_or_404(Club,pk=club_id)#making sure club exists
+    if(request.user.is_authenticated):
+        if not request.user.current_clubs.filter(pk=club_id).exists():
+            request.user.add_club(club_id)
+            return redirect('home')
+    return HttpResponse("Something went wrong...")

@@ -1,6 +1,27 @@
-<h2> Edit club </h2>
-<form method="post" novalidate>
-  {%csrf_token%}
-  {{form.as_p}}
-  <p><input type ="submit" value="Save Changes"/></p>
-</form>
+<div class="logobar">
+  <h2>ClubRallyV2</h2>
+  <a href="{%url 'logout' %}" class="logoutbutton">Logout</a>
+</div>
+<div class="blocks">
+  <div class="block" id = "Menu">
+    <a href="{%url 'home'%}" class="button">My Clubs</a>
+    <a href="{%url 'clubs:index' %}" class="button"> Search Clubs</a>
+    <a href='' class="button"> Calendar</a>
+    <a href='' class="button"> Settings</a>
+    <div id="otherlinks">
+      <ul style="list-style-type: none;-webkit-padding-start:0px;">
+        <li style="-webkit-padding-start:0px;"><a href="https://github.com/hturner08/ClubRallyV2" style="text-decoration:none;color:White;font-weight:bold;">Repository</a></li>
+        <li style="-webkit-padding-start:0px;"><a href="{%url 'aboutus'%}" style="text-decoration:none;color:White;font-weight:bold;">About us</a></li>
+        <li style="-webkit-padding-start:0px;"><a href="{%url 'aboutus' %}" style="text-decoration:none;color:White;font-weight:bold;">News</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="block" id = "edit"
+    <h2> Edit club </h2>
+    <form method="post" novalidate>
+      {%csrf_token%}
+      {{form.as_p}}
+      <p><input type ="submit" value="Save Changes"/></p>
+    </form>
+  </div>
+</div>
