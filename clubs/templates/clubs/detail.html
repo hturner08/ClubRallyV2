@@ -20,32 +20,47 @@
     </div>
   </div>
   <div class="block" id="clubinfo">
-    <h2 style="text-align:center">{{club.name}}</h2>
-    <div>
-    {%if club.board%}
-    <ul>
-      {%for person in club.board.all%}
-      <li> {{person}} </li>
-      {% endfor %}
-    </ul>
-    {%else%}
-      This club doesn't currently have any board members. ;(
-    {%endif%}
-  </div>
-    {%if club.members%}
-    <ul>
-      {%for person in club.memberList.all%}
-      <li> {{person}} </li>
-      {% endfor %}
-    </ul>
-    {%else%}
-      This club doesn't currently have any members. ;(
-    {%endif%}
-    <div id="description">{{club.description}}</div>
-    <div id="bottommenu">
-      <a href="{% url 'clubs:join' club.id %}">Join</a>
-      <a href="{%url 'clubs:edit' club.id %}">Edit club</a>
-      <a href= >Check announcements</a>
+    <h1 style="text-align:center">{{club.name}}</h1>
+    <div class="clubstuff">
+      <div id="description">{{club.description}}</div>
+      <div class="info">
+        <h2>Co-Presidents</h2>
+        {%if club.presidents%}
+        <ul>
+          {%for president in club.presidents.all%}
+          <li>{{president}}</li>
+          {%endfor%}
+        </ul>
+        {%endif%}
+        <h2>Board</h2>
+        {%if club.board%}
+        <ul>
+          {%for person in club.board.all%}
+          <li> {{person}} </li>
+          {% endfor %}
+        </ul>
+        {%else%}
+        This club doesn't currently have any board members. ;(
+        {%endif%}
+        <h2>Club Members</h2>
+        {%if club.members%}
+        <ul>
+          {%for person in club.memberList.all%}
+          <li> {{person}} </li>
+          {% endfor %}
+        </ul>
+        {%else%}
+        This club doesn't currently have any members. ;(
+        {%endif%}
+      </div>
+      <div id="bottommenu">
+        {%if inclub%}
+        <a href="{% url 'clubs:leave' club.id %}" class="bottombutton" style="background-color:Blue;">Leave</a>
+        {%else%}
+        <a href="{% url 'clubs:join' club.id %}" class="bottombutton" style="background-color:Blue;">Join</a>
+        {%endif%}
+        <a href="{%url 'clubs:edit' club.id %}" class="bottombutton" style="background-color:Red">Edit club</a>
+        <a href="{%url 'clubs:announcements' club.id %}" class="bottombutton" style="background-color:Green">Check announcements</a>
+      </div>
     </div>
   </div>
-</div>

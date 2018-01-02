@@ -75,7 +75,8 @@ def editClub(request,club_id):
 def detail(request, club_id):
     if(request.user.is_authenticated):
         theCluuuuub = get_object_or_404(Club,pk=club_id)
-        return render(request, 'clubs/detail.html',{'club' : theCluuuuub})
+        inclub = request.user.current_clubs.filter(pk=club_id).exists()
+        return render(request, 'clubs/detail.html',{'club' : theCluuuuub,'inclub':inclub})
     return HttpResponse("You do not have access to this page")
     #Yes that was a Key&Peele reference, and yes it took me 4 tries to get the Us right when I called the variable again
 def join(request, club_id):
@@ -85,3 +86,21 @@ def join(request, club_id):
             request.user.add_club(club_id)
             return redirect('home')
     return HttpResponse("Something went wrong...")
+def leave(request, club_id):
+    club = get_object_or_404(Club,pk=club_id)#making sure club exists
+    if(request.user.is_authenticated):
+        if request.user.current_clubs.filter(pk=club_id).exists():
+            request.user.remove_club(club_id)
+            return redirect('home')
+    return HttpResponse("Something went wrong...")
+
+def announcements(request, club_id):
+    club = get_object_or_404(Club,pk=club_id)
+    if(request.user.is_authenticated):
+        return render(request,'clubs/announcements.html',{'club':club})
+    return HttpResponse("Something went wrong...")
+def user(request):
+    # if(request.user.is_authenticated):
+    #     User = request.user
+    #     return render(request,'clubs/',)
+    return HttpResponse("Coming soon!")

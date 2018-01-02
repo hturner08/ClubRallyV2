@@ -1,9 +1,10 @@
 body{
   margin:0;
+  background-color:#d9e0e7;
 }
 /*Menu Bar */
 .logobar{
-  position:absolute;
+  position:fixed;
   background-color:#6C7A89;
   /* background-color:White; */
   width:100vw;
@@ -11,6 +12,8 @@ body{
   display:-webkit-inline-box;
 }
 .logoutbutton{
+  line-height:10vh;
+  font-size:20pt;
   float:right;
   text-decoration:none;
   font-weight:bold;
@@ -60,14 +63,14 @@ body{
 /*Clubs*/
 #Box{
   background-color:White;
-  height:150pt;
-  width:100pt;
+  height:15vw;
+  width:10vw;
   border-style:solid;
   border-color:Grey;
   border-width:medium;
   text-align:center;
-  margin-left:5em;
-  margin-bottom:3em;
+  margin-left:5vw;
+  margin-top:5vh;
   font-size:1em;
 }
 #Clubs{
@@ -76,27 +79,23 @@ body{
     display: flex;
     flex-wrap: wrap;
   width:80vw;
-  height:100vh;
+  height:stretch;
   background-color:#d9e0e7;
-  margin-top:1vw;
-  margin-left:30vh;
+  margin-top:0;
+  margin-left:20vw;
 }
 .viewbutton{
-  position: relative;
-  margin-top: 95%;
-  width:35%;
+  width:10vw;
   height:20pt;
   padding-left:20pt;
   padding-right:20pt;
   padding-top:10pt;
   padding-bottom:10pt;
-  vertical-align:middle;
-  margin-left:2em;
-  line-height:14em;
+  margin-left:2.5vw;
   text-decoration:none;
   font-weight:bold;
   font-size:14pt;
-  line-height:5em;
+  top:90%;
   background-color:#22A7F0;
 }
 .viewbutton:hover{
@@ -110,6 +109,29 @@ body{
   height:100vh;
   background-color:#d9e0e7;
 }
+.clubstuff{
+  display: -webkit-flex; /* Safari */
+    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+    display: flex;
+    flex-wrap: wrap;
+}
+#bottommenu{
+  width:stretch;
+  position:relative;
+  top:65vh;
+  text-align:center;
+}
+.bottombutton{
+  text-decoration:none;
+  color:Black;
+  font-weight:bold;
+  padding-top:2.5vh;
+  padding-bottom:2.5vh;
+  padding-left:2.5vw;
+  padding-right:2.5vw;
+
+}
+
 /*Front page*/
 .front{
   background-image:url("cover.jpeg");
@@ -157,4 +179,13 @@ body{
   width:2em;
   background-color:Grey;
   margin-left:48%;
+}
+
+/*Creating/Editing clubs*/
+#create{
+width:80vw;
+height:stretch;
+background-color:#d9e0e7;
+margin-top:0;
+margin-left:20vw;
 }

@@ -28,9 +28,10 @@ urlpatterns = [
     path('myclubs/', views.index, name='home'),
     path('admin/', admin.site.urls),]
 
-#User login/logout
+#User Actions
 urlpatterns += [
     url(r'^login/$', auth_views.login, {'template_name': 'clubs/login.html'}, name='login'),
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^logout/$', auth_views.logout, {'next_page': ''}, name='logout'),
+    url('user/me',views.user,name='user')
 ]

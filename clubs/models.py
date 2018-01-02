@@ -38,7 +38,12 @@ class UserManager(BaseUserManager):
             raise ValueError('Superuser must have is_superuser=True.')
 
         return self._create_user(username, email, password, **extra_fields)
-
+class Announcement(models.Model):
+    subject = models.CharField(max_length=50)
+    body = models.CharField(max_length=300, blank=True)
+    datemade = models.DateField(auto_now_add=True)
+    dateevent = models.DateField(blank=True)
+    reminder = models.BooleanField(default=False);
 class Club(models.Model):
     name = models.CharField(max_length=30)
     # id = models.IntegerField(default=Club.objects.all()|length,primary_key=True)
@@ -46,6 +51,7 @@ class Club(models.Model):
     presidents = models.ManyToManyField('clubs.User',related_name='Co-Presidents+')
     board = models.ManyToManyField('clubs.User', related_name='board members+', blank = True)
     memberList = models.ManyToManyField('clubs.User',related_name='members+', blank = True)
+    announcements = models.ManyToManyField('clubs.Announcement',related_name='announcements+',blank=True)
     description = models.CharField(max_length=10000,blank = True)
     creationDate = models.DateField('date created', default = datetime.now)
     weeklyMeetingTime = models.TimeField('Weekly Meeting Time',  default=datetime.now, blank =True)
@@ -59,6 +65,7 @@ class Club(models.Model):
     ('Su','Sunday'),
     )
     weeklyMeetingDay = models.CharField(max_length=2,choices=Day_Choices,blank=True)
+    weeklyMeetingPlace = models.CharField(max_length=20,default="TBD",blank=True)
     icon = models.ImageField(upload_to='icons/', default="{%static 'clubs/clubdefault.png'%}", blank=True)
     def count(self):
         return presidents.size + board.size + memberList.size
@@ -106,6 +113,9 @@ class User(AbstractBaseUser, PermissionsMixin):
         Sends an email to this User.
         '''
         send_mail(subject, message, from_email, [self.email], **kwargs)
+
     def add_club(self,club_id):
-        addclub = Club.objects.filter(pk=club_id)
         self.current_clubs.add(club_id)
+
+    def remove_club(self,club_id):
+        self.current_clubs.remove(club_id)

@@ -1,7 +1,6 @@
 {% load bootstrap3%}
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'clubs/style.css' %}" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <div class="logobar">
   <h2>ClubRallyV2</h2>
   <a href="{%url 'logout' %}" class="logoutbutton">Logout</a>
@@ -20,12 +19,20 @@
       </ul>
     </div>
   </div>
-  <div class="block" id = "create">
-    <h2> Edit club </h2>
-    <form method="post" novalidate>
-      {%csrf_token%}
-      {{form.as_p}}
-      <p><input type ="submit" value="Save Changes"/></p>
-    </form>
+  <div class="block" id="announcements">
+    {%if club.announcements%}
+    <ul>
+      {%for announcement in club.announcemets%}
+      <li>
+      <h3>announcement.datemade</h3>
+      <div class="announcement"><h2>announcement.subject<h2></div>
+      </li>
+      {%endfor%}
+    </ul>
+    {%endif%}
+    <div id="bottommenu">
+      <a href="{% url 'clubs:detail' club.id %}" class="bottombutton">View club</a>
+      <a href="{%url 'clubs:edit' club.id %}" class="bottombutton">Edit club</a>
+    </div>
   </div>
 </div>
