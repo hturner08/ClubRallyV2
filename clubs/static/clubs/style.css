@@ -1,12 +1,14 @@
 body{
   margin:0;
-  background-color:#d9e0e7;
+  background-color:#EEEEEE;
 }
 /*Menu Bar */
 .logobar{
   position:fixed;
-  background-color:#6C7A89;
-  /* background-color:White; */
+  border-bottom-width:thick;
+  border-bottom-style:solid;
+  border-bottom-color:#D91E18;
+  background-color:White;
   width:100vw;
   height:10vh;
   display:-webkit-inline-box;
@@ -24,20 +26,23 @@ body{
   transition:.5s;
 }
 #Menu{
-  background-color:#013243;
+  background-color:#202020;
   position:fixed;
   height:100vw;
 }
 .button{
     display:block;
-    width:20vw;
+    width:15vw;
     height:10vh;
     text-align:left;
-    text-indent:1vw;
+    text-indent:5vw;
     text-decoration:none;
     font-weight:bold;
+    border-bottom-style:solid;
+    border-bottom-width:thin;
+    border-color:#d9e0e7;
     color:White;
-    font-size:20pt;
+    font-size:16pt;
     line-height:10vh;
 }
 .button:hover{
@@ -80,7 +85,7 @@ body{
     flex-wrap: wrap;
   width:80vw;
   height:stretch;
-  background-color:#d9e0e7;
+  background-color:#EEEEEE;
   margin-top:0;
   margin-left:20vw;
 }
@@ -104,10 +109,10 @@ body{
 }
 /*Club Details*/
 #clubinfo{
-  margin-left:20vw;
-  width:80vw;
+  margin-left:15vw;
+  width:85vw;
   height:100vh;
-  background-color:#d9e0e7;
+  background-color:#EEEEEE;
 }
 .clubstuff{
   display: -webkit-flex; /* Safari */
@@ -125,10 +130,7 @@ body{
   text-decoration:none;
   color:Black;
   font-weight:bold;
-  padding-top:2.5vh;
-  padding-bottom:2.5vh;
-  padding-left:2.5vw;
-  padding-right:2.5vw;
+  padding:2vh;
 
 }
 
