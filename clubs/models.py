@@ -75,6 +75,8 @@ class Club(models.Model):
         self.delete()
     def __str__(self):
         return self.name
+    # def sendClubEmail(subject, message, from_email, ):
+    #     send_email(subject, message, from_email, recipient_list, fail_silently=False, auth_user=None, auth_password=None, connection=None, html_message=None))
 
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), unique=True)

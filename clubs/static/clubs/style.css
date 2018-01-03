@@ -7,7 +7,7 @@ body{
   position:fixed;
   border-bottom-width:thick;
   border-bottom-style:solid;
-  border-bottom-color:#D91E18;
+  border-bottom-color:#22A7F0;
   background-color:White;
   width:100vw;
   height:10vh;
@@ -78,6 +78,21 @@ body{
   margin-top:5vh;
   font-size:1em;
 }
+#CreateBox{
+  background-color:#22A7F0;
+  text-decoration:none;
+  text-align:center;
+  color:Black;
+  width:10vw;
+  height:10vw;
+  margin-left:5vw;
+  margin-top:10vh;
+  border-radius:100%;
+}
+#CreateBox:hover{
+  opacity:.5;
+  transition: 0.5s;
+}
 #Clubs{
   display: -webkit-flex; /* Safari */
     -webkit-flex-wrap: wrap; /* Safari 6.1+ */
@@ -87,20 +102,26 @@ body{
   height:stretch;
   background-color:#EEEEEE;
   margin-top:0;
-  margin-left:20vw;
+  margin-left:15vw;
+}
+h1 {
+  font-size:1em;
+}
+#clubicon{
+  width:8vw;
+  height:6.236vw;
+  margin-bottom:2vw;
 }
 .viewbutton{
-  width:10vw;
-  height:20pt;
   padding-left:20pt;
   padding-right:20pt;
   padding-top:10pt;
   padding-bottom:10pt;
-  margin-left:2.5vw;
   text-decoration:none;
+  color:Black;
   font-weight:bold;
   font-size:14pt;
-  top:90%;
+  margin-top:50vw;
   background-color:#22A7F0;
 }
 .viewbutton:hover{
@@ -187,7 +208,7 @@ body{
 #create{
 width:80vw;
 height:stretch;
-background-color:#d9e0e7;
+background-color:inherit;
 margin-top:0;
 margin-left:20vw;
 }

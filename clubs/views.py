@@ -15,9 +15,11 @@ from django.forms import ModelForm
 def front(request):
     club_list = Club.objects.all()
     return render(request, 'clubs/index.html', {'club_list':club_list})
+
 #AboutUs
 def about(request):
     return render(request,'clubs/about.html')
+
 def signup(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
@@ -31,8 +33,7 @@ def signup(request):
     else:
         form = UserForm()
     return render(request, 'clubs/signup.html', {'form': form})
-def viewUser(request, user_id):
-    return HttpResponse("You cannot currently view users(I hate coding those fucking django templates so this feature is not happening for now).")
+
 #Search Clubs
 def home(request):
     if(request.user.is_authenticated):
@@ -79,15 +80,17 @@ def detail(request, club_id):
         return render(request, 'clubs/detail.html',{'club' : theCluuuuub,'inclub':inclub})
     return HttpResponse("You do not have access to this page")
     #Yes that was a Key&Peele reference, and yes it took me 4 tries to get the Us right when I called the variable again
+
 def join(request, club_id):
-    club = get_object_or_404(Club,pk=club_id)#making sure club exists
+    club = get_object_or_404(Club,pk=club_id)
     if(request.user.is_authenticated):
         if not request.user.current_clubs.filter(pk=club_id).exists():
             request.user.add_club(club_id)
             return redirect('home')
     return HttpResponse("Something went wrong...")
+
 def leave(request, club_id):
-    club = get_object_or_404(Club,pk=club_id)#making sure club exists
+    club = get_object_or_404(Club,pk=club_id)
     if(request.user.is_authenticated):
         if request.user.current_clubs.filter(pk=club_id).exists():
             request.user.remove_club(club_id)
@@ -99,8 +102,12 @@ def announcements(request, club_id):
     if(request.user.is_authenticated):
         return render(request,'clubs/announcements.html',{'club':club})
     return HttpResponse("Something went wrong...")
+
+def me(request):
+    return HttpResponse("Coming soon")
+
 def user(request):
     # if(request.user.is_authenticated):
     #     User = request.user
     #     return render(request,'clubs/',)
-    return HttpResponse("Coming soon!")
+    return HttpResponse("Coming soon(Probably not, I'm lazy.)")

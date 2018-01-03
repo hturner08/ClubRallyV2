@@ -26,6 +26,8 @@ urlpatterns = [
     path('aboutus/',views.about, name='aboutus'),
     path('clubs/', include('clubs.urls',namespace="clubs")),
     path('myclubs/', views.index, name='home'),
+    path('user/settings', views.me, name='me'),
+    path('user/<int:user_id>', views.user, name='user'),
     path('admin/', admin.site.urls),]
 
 #User Actions

@@ -11,7 +11,7 @@
     <a href="{%url 'home'%}" class="button">My Clubs</a>
     <a href="{%url 'clubs:index' %}" class="button"> Search Clubs</a>
     <a href='' class="button"> Calendar</a>
-    <a href='' class="button"> Settings</a>
+    <a href="{%url 'user'%}" class="button"> Settings</a>
     <div id="otherlinks">
       <ul style="list-style-type: none;-webkit-padding-start:0px;">
         <li style="-webkit-padding-start:0px;"><a href="https://github.com/hturner08/ClubRallyV2" style="text-decoration:none;color:White;font-weight:bold;">Repository</a></li>
@@ -25,9 +25,19 @@
       {% for club in club_list %}
       <div id="Box">
         <h1>{{ club.name }}</h1>
+        {%if club.icon%}
+        <img id = "clubicon" src="{{club.icon.url}}"></img>
+        {%else%}
+        <img id ="clubicon" src="{%static 'clubs/clubdefault.png'%}"></img>
+        {%endif%}
         <a class = "viewbutton" href="{% url 'clubs:detail' club.id %}">View</a>
       </div>
       {% endfor %}
+      <a id="CreateBox" href="{%url 'clubs:create' %}">
+        <div style="background-color:White;width:1vw;height:6vw;border-radius:20pt;margin-top:2vw;margin-left:4.5vw"></div>
+        <div style="background-color:White;width:6vw;height:1vw;border-radius:20pt;margin-top:-3.5vw;margin-left:2vw"></div>
+        <h2 style="margin-top:5vw">Create Club</h2>
+      </a>
   {% else %}
     <p> No clubs have been created.</p>
   {% endif %}
