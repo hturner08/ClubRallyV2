@@ -3,8 +3,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
-from .models import User
-from .models import Club
+from .models import User, Club, Announcement
 
 
 class UserForm(UserCreationForm):
@@ -31,7 +30,12 @@ class CreateClubForm(forms.ModelForm):
         #     cleaned_data['username'] = self.__generate_username(
         #                                                 cleaned_data['email'])
         return cleaned_data
-
+class CreateAnnouncementForm(forms.ModelForm):
+    class Meta:
+        model = Announcement
+        fields=['subject','body','dateevent','reminder']
+    def clean(self, *args, **kwargs):
+        cleaned_data = super(forms.ModelForm, self).clean(*args, **kwargs)
 # class UniqueUserEmailField(forms.EmailField):
 #     """
 #     An EmailField which only is valid if no User has that email.

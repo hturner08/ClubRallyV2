@@ -9,7 +9,7 @@
   <div class="block" id = "Menu">
     <a href="{%url 'home'%}" class="button">My Clubs</a>
     <a href="{%url 'clubs:index' %}" class="button"> Search Clubs</a>
-    <a href='' class="button"> Calendar</a>
+    <a href='' class="button"> Notification</a>
     <a href="{%url 'user'%}" class="button"> Settings</a>
     <div id="otherlinks">
       <ul style="list-style-type: none;-webkit-padding-start:0px;">
@@ -22,6 +22,15 @@
   <div class="block" id="clubinfo">
     <h1 style="text-align:center;font-size:4em;text-decoration:underline">{{club.name}}</h1>
     <div class="clubstuff">
+      <div id="bottommenu">
+        {%if inclub%}
+        <a href="{% url 'clubs:leave' club.id %}" class="bottombutton" style="background-color:#22A7F0;;">Leave</a>
+        {%else%}
+        <a href="{% url 'clubs:join' club.id %}" class="bottombutton" style="background-color:#22A7F0;;">Join</a>
+        {%endif%}
+        <a href="{%url 'clubs:edit' club.id %}" class="bottombutton" style="background-color:#22A7F0;">Edit club</a>
+        <a href="{%url 'clubs:announcements' club.id %}" class="bottombutton" style="background-color:#22A7F0;">Announcements</a>
+      </div>
       <div id="description">{{club.description}}</div>
       <div class="info">
         <h2>Co-Presidents</h2>
@@ -52,15 +61,6 @@
         {%else%}
         This club doesn't currently have any members. ;(
         {%endif%}
-      </div>
-      <div id="bottommenu">
-        {%if inclub%}
-        <a href="{% url 'clubs:leave' club.id %}" class="bottombutton" style="background-color:Blue;">Leave</a>
-        {%else%}
-        <a href="{% url 'clubs:join' club.id %}" class="bottombutton" style="background-color:Blue;">Join</a>
-        {%endif%}
-        <a href="{%url 'clubs:edit' club.id %}" class="bottombutton" style="background-color:Red">Edit club</a>
-        <a href="{%url 'clubs:announcements' club.id %}" class="bottombutton" style="background-color:Green">Announcements</a>
       </div>
     </div>
   </div>
