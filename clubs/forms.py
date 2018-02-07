@@ -1,5 +1,6 @@
 import re
 from django import forms
+from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
@@ -36,6 +37,7 @@ class CreateAnnouncementForm(forms.ModelForm):
         fields=['subject','body','dateevent','reminder']
     def clean(self, *args, **kwargs):
         cleaned_data = super(forms.ModelForm, self).clean(*args, **kwargs)
+
 # class UniqueUserEmailField(forms.EmailField):
 #     """
 #     An EmailField which only is valid if no User has that email.
