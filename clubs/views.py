@@ -48,6 +48,8 @@ def index(request):
         return render(request,'clubs/myclubs.html',{'club_list':club_list})
     return HttpResponse("You do not have access to this page")
 
+def index2(request):
+    return render(request, 'clubs/base2.html')
 def createClub(request):
     if request.method == 'POST':
         form = CreateClubForm(request.POST)
@@ -99,7 +101,15 @@ def leave(request, club_id):
 
 def announcements(request, club_id):
     club = get_object_or_404(Club,pk=club_id)
-    if(request.user.is_authenticated):
+    if(request.user.is_authenticated & (club.presidents.filter(email=request.user.email).exists())):
+        if request.method == 'POST':
+            form = CreateClubForm(request.POST,instance=club)
+            if form.is_valid():
+                form.save()
+                return redirect('clubs:index')
+        else:
+            form = CreateClubForm(instance=club)
+            return render(request,'clubs/editclub.html',{'form':form})
         return render(request,'clubs/announcements.html',{'club':club})
     return HttpResponse("Something went wrong...")
 

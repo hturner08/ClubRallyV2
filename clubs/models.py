@@ -44,6 +44,7 @@ class Announcement(models.Model):
     datemade = models.DateField(auto_now_add=True)
     dateevent = models.DateField(blank=True)
     reminder = models.BooleanField(default=False);
+    club = models.ForeignKey('clubs.Club', blank=True, on_delete = models.CASCADE)
 class Club(models.Model):
     name = models.CharField(max_length=30)
     # id = models.IntegerField(default=Club.objects.all()|length,primary_key=True)
@@ -51,7 +52,6 @@ class Club(models.Model):
     presidents = models.ManyToManyField('clubs.User',related_name='Co-Presidents+')
     board = models.ManyToManyField('clubs.User', related_name='board members+', blank = True)
     memberList = models.ManyToManyField('clubs.User',related_name='members+', blank = True)
-    announcements = models.ManyToManyField('clubs.Announcement',related_name='announcements+',blank=True)
     description = models.CharField(max_length=10000,blank = True)
     creationDate = models.DateField('date created', default = datetime.now)
     weeklyMeetingTime = models.TimeField('Weekly Meeting Time',  default=datetime.now, blank =True)
