@@ -49,20 +49,17 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 ]
+#
+# CACHES = {
+#    'default': {
+#       'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+#       'LOCATION': '127.0.0.1:11211',
+#    }
+# }
 
-CACHES = {
-   'default': {
-      'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-      'LOCATION': '127.0.0.1:11211',
-   }
-}
-
-MIDDLEWARE_CLASSES += (
-   'django.middleware.cache.UpdateCacheMiddleware',
-   'django.middleware.common.CommonMiddleware',
-   'django.middleware.cache.FetchFromCacheMiddleware',
-)
 
 ROOT_URLCONF = 'ClubRallyV2.urls'
 
