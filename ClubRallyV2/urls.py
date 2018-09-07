@@ -32,8 +32,8 @@ urlpatterns = [
 
 #User Actions
 urlpatterns += [
-    url(r'^login/$', auth_views.login, {'template_name': 'clubs/login.html'}, name='login'),
+    url(r'^login/$', auth_views.LoginView.as_view(template_name= 'clubs/login.html'), name='login'),
     url(r'^signup/$', views.signup, name='signup'),
-    url(r'^logout/$', auth_views.logout, {'next_page': ''}, name='logout'),
+    url(r'^logout/$', auth_views.LogoutView, {'next_page': ''}, name='logout'),
     url('user/me',views.user,name='user')
 ]

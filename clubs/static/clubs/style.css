@@ -162,18 +162,18 @@ h1 {
 
 /*Front page*/
 .front{
-  background-image:url("cover.jpeg");
-  background-size:cover;
+  background-color:White;
   text-align:center;
-  color:White;
+  color:Red;
 }
 .btn{
   width:10vw;
   height:5vw;
   border-style:solid;
   border-width:medium;
+  border-radius:10px;
   color:White;
-  border-color:#22A7F0;
+  background-color:#22A7F0;
   text-decoration:none;
   padding:5pt;
   font-size:20pt;
@@ -181,7 +181,7 @@ h1 {
   margin-left:.5em;
 }
 .btn:hover{
-  background-color:#22A7F0;
+  background-color:Black;
 }
 .h2{
   text-decoration:none;
@@ -190,13 +190,12 @@ h1 {
   float:right;
   margin-right:2vw;
   color:#22A7F0;
-  margin-top:-42vh;
 }
 .title{
   text-decoration:none;
   text-align:center;
   font-size:40pt;
-  margin-top:45vh;
+  margin-top:10vh;
 }
 /* About Us Page*/
 .about{

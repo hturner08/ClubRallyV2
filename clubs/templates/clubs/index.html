@@ -2,9 +2,11 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'clubs/style.css' %}" />
 <body class = "front">
-    <a class="h2" href = "{% url 'aboutus' %}" style="color:White">About Us</a>
-    <h1 class="title">Welcome to ClubRally</h1>
+    <!-- <a class="h2" href = "{% url 'aboutus' %}" style="color:White">About Us</a> -->
+    <!-- <img id="logo" src="{%static 'clubs/TempLogo.png'%}"></img> -->
+    <h1 class="title">ClubRally</h1>
     <a class="btn" href="{%url 'login' %}">Log in</a>
     <a class="btn" href="{% url 'signup'%}">Sign up</a>
     <h2>{{club_list|length}} clubs have been created so far!</h2>
+    <input type="text" placeholder="Search..">
 </body>
